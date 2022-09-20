@@ -17,8 +17,7 @@ export class Translator {
    * @returns String translated into morsecode.
    */
   englishToMorse(text) {
-    let textString = text.to
-    
+    let textString = text.toLowerCase()
     let stringArray = textString.split('')
     let answer = ''
 
@@ -32,5 +31,26 @@ export class Translator {
       
     }
     console.log(answer) 
+  }
+
+  /**
+   * Method for translating morse into english. 
+   *
+   * @param {string} text the string to translate.
+   */
+  morseToEnglish(text) {
+    let textString = text.toLowerCase()
+    let stringArray = textString.split(' ')
+    let answer = ''
+
+    for (let i = 0; i < stringArray.length; i++) {
+      for (let j = 0; j < this.morseAlphabet.length; j++) {
+        if (this.morseAlphabet[j] === stringArray[i]) {
+          answer = answer + this.englishAlphabet[j]
+        }
+      }
+      
+    }
+    console.log(answer)
   }
 }
