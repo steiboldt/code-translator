@@ -30,16 +30,17 @@ export class Translator {
       }
       
     }
-    console.log(answer) 
+    return answer
   }
 
   /**
    * Method for translating morse into english. 
    *
    * @param {string} text the string to translate.
+   * @returns String translated into english from morrsecode.
    */
   morseToEnglish(text) {
-    let textString = text.toLowerCase()
+    let textString = text
     let stringArray = textString.split(' ')
     let answer = ''
 
@@ -51,6 +52,6 @@ export class Translator {
       }
       
     }
-    console.log(answer)
+    return answer
   }
 }
