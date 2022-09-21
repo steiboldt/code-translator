@@ -13,10 +13,28 @@ export class Translator {
   }
 
   /**
+   * Checks if there are other characters than the ones in the code-alphabets.
+   *
+   * @param {string} text string to be validated
+   * @returns an array with the characaters from the string
+   */
+  validateCode(text) {
+    let textString = text
+    let stringArray = textString.split(' ')
+
+    stringArray.forEach(letter => {
+      if (!this.binaryAlphabet.includes(letter) && !this.morseAlphabet.includes(letter)) {
+        throw new Error('Error: This is not a valid input')
+      }
+    })
+    return stringArray
+  }
+
+  /**
    * Checks if there are other characters than the ones in the english alphabet.
    *
    * @param {string} text string to be validated. 
-   * @returns an array with the characters in the string.
+   * @returns an array with the characters from the string.
    */
   validateText(text) {
     let textString = text.toLowerCase()
@@ -36,9 +54,8 @@ export class Translator {
    * @param {String} text String of characters from the binary alphabet.
    * @returns String translated from binary to english
    */
-  binaryToEnglish(text) {
-    let textString = text
-    let stringArray = textString.split(' ')
+  binaryToEnglish(stringArray) {
+    stringArray = this.validateCode(stringArray)
     let answer = ''
 
     for (let i = 0; i < stringArray.length; i++) {
@@ -104,9 +121,8 @@ export class Translator {
    * @param {string} text the string to translate.
    * @returns String translated into english from morsecode.
    */
-  morseToEnglish(text) {
-    let textString = text
-    let stringArray = textString.split(' ')
+  morseToEnglish(stringArray) {
+    stringArray = this.validateCode(stringArray)
     let answer = ''
 
     for (let i = 0; i < stringArray.length; i++) {
