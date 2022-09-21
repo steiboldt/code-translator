@@ -3,15 +3,39 @@ export class Translator {
 
     this.englishAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 
-    'y', 'z']
+    'y', 'z', ' ']
 
     this.morseAlphabet = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", 
     ".---", "-.-", ".-..", "--", "-.", "---", ".---.", "--.-", ".-.",
-    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."]
+    "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", " "]
 
-    this.binaryAlphabet = ['01000001', '01000010', '01000011', '01000100', '01000101', '01000110', '01000111', '01001000', '01001001', '01001010', '01001011', '01001100', '01001101', '01001110', '01001111', '01010000', '01010001', '01010010', '01010011', '01010100', '01010101', '01010110', '01010111', '01011000', '01011001', '01011010']
+    this.binaryAlphabet = ['01000001', '01000010', '01000011', '01000100', '01000101', '01000110', '01000111', '01001000', '01001001', '01001010', '01001011', '01001100', '01001101', '01001110', '01001111', '01010000', '01010001', '01010010', '01010011', '01010100', '01010101', '01010110', '01010111', '01011000', '01011001', '01011010', ' ']
   }
 
+  /**
+   * Checks if there are other characters than the ones in the english alphabet.
+   *
+   * @param {string} text string to be validated. 
+   * @returns an array with the characters in the string.
+   */
+  validateText(text) {
+    let textString = text.toLowerCase()
+    let stringArray = textString.split('')
+
+    stringArray.forEach(letter => {
+      if (!this.englishAlphabet.includes(letter)) {
+        throw new Error('Error: This is not a valid input, only a-z')
+        
+      }
+    })
+    return stringArray
+  }
+
+  /**
+   * 
+   * @param {String} text String of characters from the binary alphabet.
+   * @returns String translated from binary to english
+   */
   binaryToEnglish(text) {
     let textString = text
     let stringArray = textString.split(' ')
@@ -34,9 +58,8 @@ export class Translator {
    * @param {string} text String to translate
    * @returns string translated into binary code. 
    */
-  englishToBinary(text) {
-    let textString = text.toLowerCase()
-    let stringArray = textString.split('')
+  englishToBinary(stringArray) {
+    stringArray = this.validateText(stringArray)
     let answer = ''
 
     for (let i = 0; i < stringArray.length; i++) {
@@ -58,17 +81,10 @@ export class Translator {
    * @param {string} text the string to translate.
    * @returns String translated into morsecode.
    */
-  englishToMorse(text) {
-    let textString = text.toLowerCase()
-    let stringArray = textString.split('')
+  englishToMorse(stringArray) {
+    stringArray = this.validateText(stringArray)
     let answer = ''
 
-    /* stringArray.forEach(letter => {
-      if (!this.englishAlphabet.includes(letter)) {
-        throw new Error('Error: This is not a valid input, only a-z')
-        
-      }
-    }) */
 
     for (let i = 0; i < stringArray.length; i++) {
       for (let j = 0; j < this.englishAlphabet.length; j++) {
