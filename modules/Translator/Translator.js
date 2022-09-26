@@ -26,7 +26,7 @@ export class Translator {
     let stringArray = textString.split(' ')
 
     stringArray.forEach(letter => {
-      if (!this.binaryAlphabet.includes(letter) && !this.morseAlphabet.includes(letter) && !this.caesarCipher13) {
+      if (!this.binaryAlphabet.includes(letter) && !this.morseAlphabet.includes(letter) && !this.caesarCipher13.includes(letter)) {
         throw new Error('Error: This is not a valid input')
       }
     })
