@@ -39,7 +39,7 @@ Beskriv din kod på en hög abstraktionsnivå. En kort beskrivning av dina vikti
 - Tanken med modulen är att en användare ska kunna översätta till och från olika kodspråk. Det jag gör är att jämföra arrayer med bokstäver. Man får sedan ut en sträng med bokstäver eller tecken. Klassen [*Translator*](./modules/Translator/Translator.js) Innehåller arrayer med bokstäver och de metoder jag skrivit för att översätta mellan engelska, morse, binärt och ceasarshiffer.
 ​
 ## Hur jag testat
-Beskriv hur du kommit fram till om din kod fungerar.
+Jag har gjort manuella tester som dokumenterats i [Testrapport](Testrapport.md) där jag testat de olika metoderna med input och förväntat resultat.
 ​
 ### Testfall
 Lista de enskilda testfallen. **Fetmarkera** sådant som du själv fyllt i. En rad per testfall. Om ni använder vertyg för testning kan ni ha en bild här med testrapporten. Tänk på att kommunicera till mig. Vad fungerar?, vad fungerar inte? Hur är det testat? Vilka delar testas inte?
